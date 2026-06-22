@@ -33,12 +33,12 @@ export default function Navbar() {
     await authClient.signOut();
     router.push('/');
   };
-  // console.log(session);
+  console.log(session);
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-white/5 bg-slate-950/65 backdrop-blur-md py-3.5 px-6">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-       <Logo></Logo>
+        <Logo></Logo>
 
         {/* NAVIGATION LINKS */}
         <div className="hidden sm:flex items-center gap-8">
@@ -49,10 +49,16 @@ export default function Navbar() {
             Home
           </Link>
           <Link
-            href="/events"
-            className={`text-sm font-medium transition-colors ${pathname.startsWith('/events') ? 'text-pink-500 font-semibold' : 'text-slate-300 hover:text-white'}`}
+            href="/donation-request"
+            className={`text-sm font-medium transition-colors ${pathname.startsWith('/donation-request') ? 'text-pink-500 font-semibold' : 'text-slate-300 hover:text-white'}`}
           >
-            Browse Events
+            Donation Request
+          </Link>
+          <Link
+            href="/search-donor"
+            className={`text-sm font-medium transition-colors ${pathname.startsWith('/search-donor') ? 'text-pink-500 font-semibold' : 'text-slate-300 hover:text-white'}`}
+          >
+            Search Donor
           </Link>
           {session && session?.user && (
             <Link
@@ -114,7 +120,7 @@ export default function Navbar() {
 
                   {/* Actions */}
                   <Link
-                    href="/dashboard/organizer"
+                    href="/dashboard/volunteer"
                     onClick={() => setDropdownOpen(false)}
                     className="w-full flex items-center gap-2.5 px-4 py-2.5 text-left text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/5 transition cursor-pointer"
                   >
