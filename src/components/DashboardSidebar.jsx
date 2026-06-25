@@ -20,18 +20,24 @@ const DashboardSideBar = () => {
   const { data: session } = useSession();
   const handleLogout = () => {};
 
-  const orgnaizerMenu = [
+  const volunteerMenu = [
     {
       key: 'Dashboard',
       label: 'Dashboard',
       icon: FaUsers,
-      href: '/dashboard',
+      href: '/dashboard/volunteer',
     },
     {
       key: 'All Blood Donation Requests',
       label: 'All Blood Donation Requests',
       icon: FaBuilding,
-      href:'/dashboard/all-blood-donation-request',
+      href: '/dashboard/volunteer/all-blood-donation-request',
+    },
+    {
+      key: 'Create Requests',
+      label: 'Create Requests',
+      icon: FaBuilding,
+      href: '/dashboard/volunteer/all-blood-donation-request/new',
     },
     {
       key: 'Profile',
@@ -41,7 +47,7 @@ const DashboardSideBar = () => {
     },
   ];
 
-  const DonorMenu = [
+  const donorMenu = [
     {
       key: 'Dashboard',
       label: 'Dashboard',
@@ -96,15 +102,16 @@ const DashboardSideBar = () => {
   ];
 
   const role = session?.user?.role;
+  // const role = 'donor'
 
-  // const manuItems =
-  //   role === 'organizer'
-  //     ? orgnaizerMenu
-  //     : role === 'attendee'
-  //       ? attendeeMenu
-  //       : role === 'admin'
-  //         ? adminMenu
-  //         : null;
+  const manuItems =
+    role === 'volunteer'
+      ? volunteerMenu
+      : role === 'donor'
+        ? donorMenu
+        : role === 'admin'
+          ? adminMenu
+          : null;
 
   return (
     <aside className="w-64 h-screen border-r border-white/5">
@@ -141,10 +148,8 @@ const DashboardSideBar = () => {
 
         {/* Navigation Menu */}
         <nav className="flex-grow overflow-y-auto px-3 py-4 space-y-1">
-          <p className="text-[10px] text-slate-600 font-bold uppercase tracking-widest px-3 pb-2">
-            Navigation
-          </p>
-          {orgnaizerMenu?.map(({ key, label, icon: Icon, href }) => {
+          <p className="text-[10px] text-slate-600 font-bold uppercase tracking-widest px-3 pb-2"></p>
+          {manuItems?.map(({ key, label, icon: Icon, href }) => {
             return (
               <Link
                 key={key}

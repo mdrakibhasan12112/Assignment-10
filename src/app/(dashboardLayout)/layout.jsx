@@ -4,11 +4,11 @@ import DashboardSidebar from '@/components/DashboardSidebar';
 const DashboardLayout = ({ children }) => {
 
   return (
-    <div className="min-h-screen flex">
-    <aside>
-     <DashboardSidebar></DashboardSidebar>
-     </aside>
-      <div>{children}</div>
+    <div className="bg-[#070b19]  min-h-screen flex">
+      <aside>
+        <DashboardSidebar></DashboardSidebar>
+      </aside>
+      <div >{children}</div>
     </div>
   );
 };

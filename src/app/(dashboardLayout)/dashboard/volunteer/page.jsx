@@ -13,9 +13,6 @@ import {
 import VolunteerCard from '@/components/VolunteerCard';
 import VolunteerChart from '@/components/VolunteerChart';
 
-// import StatCard from '@/components/dashboard/StatCard';
-// import VolunteerChart from '@/components/dashboard/VolunteerChart';
-
 export default function VolunteerDashboard() {
   const router = useRouter();
 
@@ -91,7 +88,7 @@ export default function VolunteerDashboard() {
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         {/* Chart */}
 
-        <div className="xl:col-span-2 bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+        {/* <div className="xl:col-span-2 bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
           <h2 className="text-lg font-bold text-gray-800">
             Donation Analytics
           </h2>
@@ -101,11 +98,11 @@ export default function VolunteerDashboard() {
           </p>
 
           <VolunteerChart />
-        </div>
+        </div> */}
 
         {/* Action Card */}
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+        {/* <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
           <h2 className="font-bold text-lg text-gray-800">Volunteer Actions</h2>
 
           <div className="space-y-4 mt-6">
@@ -142,7 +139,7 @@ export default function VolunteerDashboard() {
           >
             Manage Requests
           </button>
-        </div>
+        </div> */}
       </div>
 
       {/* Recent Requests */}
