@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { useSession } from '@/lib/auth-client';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import {
   FaHeartbeat,
   FaUser,
@@ -15,6 +15,7 @@ import {
 
 import districtsData from '@/data/districts.json';
 import upazilasData from '@/data/upazilas.json';
+import { createDonation } from '@/lib/action/donationRequests';
 
 export default function CreateDonationRequest() {
  const { data: session } = useSession();
@@ -85,24 +86,31 @@ export default function CreateDonationRequest() {
    requesterEmail: session?.user?.email,
    donationStatus: 'pending',
   };
+  const res = await createDonation(requestData)
+    if (res.insertedId) {
+      // toast.success('Job posted successfully!');
+      e.target.reset();
+      redirect('/dashboard/volunteer/all-blood-donation-request');
+    }
 
-  try {
-   const res = await fetch('http://localhost:5000/api/blood-requests', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(requestData),
-   });
-   if (res.ok) {
-    alert('Blood donation request created successfully! 🎉');
-    router.push('/dashboard/my-donation-requests');
-   } else {
-    alert('Something went wrong!');
-   }
-  } catch (error) {
-   console.error(error);
-  } finally {
-   setLoading(false);
-  }
+
+  // try {
+  //  const res = await fetch('http://localhost:5000/api/blood-requests', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify(requestData),
+  //  });
+  //  if (res.ok) {
+  //   alert('Blood donation request created successfully! 🎉');
+  //   router.push('/dashboard/my-donation-requests');
+  //  } else {
+  //   alert('Something went wrong!');
+  //  }
+  // } catch (error) {
+  //  console.error(error);
+  // } finally {
+  //  setLoading(false);
+  // }
  };
 
 
